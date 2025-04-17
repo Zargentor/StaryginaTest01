@@ -1,0 +1,40 @@
+name: CI Pipeline
+
+# Определяем, при каких событиях будет запускаться этот workflow
+on:
+  # Запускать при каждом пуше в ветку main
+  push:
+    branches:
+      - main
+  # Запускать при создании Pull Request в ветку main
+  pull_request:
+    branches:
+      - main
+
+# Определяем среду выполнения
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest # Используем последнюю версию Ubuntu
+
+    steps:
+      # Шаг 1: Выполняем checkout кода из репозитория
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Шаг 2: Устанавливаем .NET SDK
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x' # Указываем версию .NET SDK
+
+      # Шаг 3: Восстанавливаем зависимости проекта
+      - name: Restore dependencies
+        run: dotnet restore
+
+      # Шаг 4: Собираем проект
+      - name: Build project
+        run: dotnet build --no-restore --configuration Release
+
+      # Шаг 5: Запускаем тесты
+      - name: Run tests
+        run: dotnet test --no-build --configuration Release --logger "trx"
