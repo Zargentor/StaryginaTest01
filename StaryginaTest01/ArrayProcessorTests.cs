@@ -1,6 +1,7 @@
-﻿using Xunit;
+﻿using ArrayProcessingApp;
+using Xunit;
 
-namespace ArrayProcessingApp.Tests
+namespace StaryginaTest01
 {
     public class ArrayProcessorTests
     {

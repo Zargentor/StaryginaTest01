@@ -42,6 +42,11 @@ namespace ArrayProcessingApp
                         Console.WriteLine($"Input: {line} -> Error: Invalid data");
                         continue;
                     }
+                    if (numbers.Length > 1024)
+                    {
+                        Console.WriteLine($"Input: {line} -> Error: Array length exceeds 1024 elements.");
+                        continue;
+                    }
 
                     try
                     {
