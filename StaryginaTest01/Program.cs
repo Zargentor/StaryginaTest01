@@ -6,7 +6,13 @@ namespace ArrayProcessingApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Array Processing Application");
+            var processor = new ArrayProcessor();
+
+            // Подгрузка файла из корневой директории проекта
+            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "input.txt");
+
+            // Считать тестовые наборы
+            processor.ProcessFile(filePath);
         }
     }
 }
