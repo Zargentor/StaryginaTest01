@@ -16,7 +16,7 @@ namespace ArrayProcessingApp
             {
                 if (array[i] % 3 == 0 && array[i + 1] < 0)
                 {
-                    pairs.Add((i, array[i], i + 1, array[i + 1])) ;
+                    pairs.Add((i, array[i], i + 1, array[i + 1]));
                 }
             }
 
